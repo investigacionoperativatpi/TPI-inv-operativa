@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
+import { setVar, setRestrictions} from '../store/actions';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { setVar, setRestrictions} from '../store/actions';
 import './varAndObjFunction.css'
 
 class VarAndObjFunction extends Component {
@@ -22,21 +24,25 @@ class VarAndObjFunction extends Component {
       render() { 
         // const { branchId, roles, ...props } = this.props ESTO ES UN EJEMPLO PARA TENER EN CUENTA
         return ( 
-            <Card className="text-center var col-4">
-            <Card.Header>SIMPLEX</Card.Header>
-            <Card.Body>
-                <Card.Title>Variables y Resrticciones</Card.Title>
-                <div className="col-12">
-                    <label className="col-6">Variables:</label>
-                    <input type="text" className="col-6" ref={this.varInput}/>
-                </div>
-                <div className="col-12">
-                    <label className="col-6">Restricciones:</label>
-                    <input type="text" className="col-6" ref={this.restrictionInput}/>
-                </div>
-                <Button variant="outline-info" className="col-12" onClick={this.setVarAndRestrictions}>Go somewhere</Button>
-            </Card.Body>
-            </Card>
+            <Row>
+                <Col xs={12} md={12}>
+                    <Card className="text-center var">
+                    <Card.Header>SIMPLEX</Card.Header>
+                    <Card.Body>
+                        <Card.Title>Variables y Resrticciones</Card.Title>
+                        <div className="col-12">
+                            <label className="col-6">Variables:</label>
+                            <input type="number" className="col-6" ref={this.varInput}/>
+                        </div>
+                        <div className="col-12">
+                            <label className="col-6">Restricciones:</label>
+                            <input type="number" className="col-6" ref={this.restrictionInput}/>
+                        </div>
+                        <Button variant="outline-info" className="col-12" onClick={this.setVarAndRestrictions}>Continuar</Button>
+                    </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
          );
     }
 }

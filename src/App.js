@@ -4,6 +4,8 @@ import './App.css';
 import { connect } from 'react-redux';
 import { setVar, setRestrictions} from './store/actions';
 import VarAndObjFunction from './components/VarAndObjFunction';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 // import ObjectFunction from './components/ObjectFunction';
 
 
@@ -11,10 +13,14 @@ class App extends React.Component{
   render () {
     console.log(this.props)
     return (
-      <div className="App col-12">
-       <div> HOLIS, SOY APP</div>
-        <VarAndObjFunction/>
-        {/* <ObjectFunction/> */}
+      <div>
+        <h1 className="center"> HOLIS, SOY APP</h1>
+        <Row>
+          <Col md={12} lg={4}>
+          <VarAndObjFunction/>
+          </Col>
+        </Row>
+          {/* <ObjectFunction/> */}
       </div>
     );
   }
