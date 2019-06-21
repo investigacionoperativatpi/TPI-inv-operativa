@@ -11,3 +11,17 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+.btn-outline-info:disabled {
+    background: rgb(212, 211, 211);
+    border-color: rgb(53, 51, 51);
+    color: rgb(53, 51, 51);
+}
+
+.plus {
+    margin: 0 15px;
+}
+
+.holis.col-3 {
+    padding: 0 !important;
+}

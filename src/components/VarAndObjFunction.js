@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { setVar, setRestrictions} from '../store/actions';
+import { setVar, setRestrictions, showOrNotObjFunction } from '../store/actions';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -17,12 +17,14 @@ class VarAndObjFunction extends Component {
       }
 
       setVarAndRestrictions =  () => {
-          this.props.setRestrictions(this.restrictionInput.current.value)
-          this.props.setVar(this.varInput.current.value)
+          this.props.setRestrictions(parseInt(this.restrictionInput.current.value))
+          this.props.setVar(parseInt(this.varInput.current.value))
+          this.props.showOrNotObjFunction()
       }
       
       render() { 
-        // const { branchId, roles, ...props } = this.props ESTO ES UN EJEMPLO PARA TENER EN CUENTA
+        console.log('esto es el show',this.props.show )
+        const { show } = this.props 
         return ( 
             <Row>
                 <Col xs={12} md={12}>
@@ -38,7 +40,14 @@ class VarAndObjFunction extends Component {
                             <label className="col-6">Restricciones:</label>
                             <input type="number" className="col-6" ref={this.restrictionInput}/>
                         </div>
-                        <Button variant="outline-info" className="col-12" onClick={this.setVarAndRestrictions}>Continuar</Button>
+                        <Button 
+                            variant="outline-info" 
+                            className="col-12" 
+                            onClick={this.setVarAndRestrictions}
+                            disabled={show ? true : false}
+                        >
+                            Continuar
+                        </Button>
                     </Card.Body>
                     </Card>
                 </Col>
@@ -47,17 +56,26 @@ class VarAndObjFunction extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    setVar,
-    setRestrictions
-}, dispatch)
-    
 VarAndObjFunction.propTypes = {
     setVar: PropTypes.func.isRequired,
-    setRestrictions: PropTypes.func.isRequired
+    setRestrictions: PropTypes.func.isRequired,
+    showOrNotObjFunction: PropTypes.func.isRequired,
+    show: PropTypes.bool.isRequired
 }
 
+const mapStateToProps = (state) => {
+    return {
+      show: state.ObjFunction.show
+    }
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    setVar,
+    setRestrictions,
+    showOrNotObjFunction
+}, dispatch)
+    
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(VarAndObjFunction)
