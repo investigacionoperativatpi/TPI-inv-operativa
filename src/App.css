@@ -35,3 +35,8 @@
 .center {
   text-align: center
 }
+
+.app {
+  margin: 0 25px ;
+  min-width: 350px;
+}

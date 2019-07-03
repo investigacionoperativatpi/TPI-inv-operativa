@@ -7,6 +7,7 @@ import VarAndObjFunction from './components/VarAndObjFunction';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ObjectFunction from './components/ObjectFunction';
+import Restrictions from './components/restrictions'
 
 
 class App extends React.Component{
@@ -14,7 +15,7 @@ class App extends React.Component{
     const { show } = this.props
     console.log(this.props)
     return (
-      <div>
+      <div className="app">
         <h1 className="center"> HOLIS, SOY APP</h1>
         <Row>
           <Col md={12} lg={4}>
@@ -23,6 +24,7 @@ class App extends React.Component{
           {show &&
             <Col md={12} lg={8}>
               <ObjectFunction/>
+              <Restrictions/>
             </Col>
           }
         </Row>

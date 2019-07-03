@@ -24,6 +24,17 @@ function reducer(state = initialState, action) {
           }
 
         };
+        case 'SET_OBJ_FUNCTION':
+          console.log('paso por el reducer en el SET_OBJ_FUNCTION', action)
+            return {
+              ...state,
+              ObjFunction:{
+                ...state.ObjFunction,
+                objetive : action.obj.objetive,
+                optimizationType: action.obj.optimizationType 
+              }
+    
+            };
       default:
         return state;
     }

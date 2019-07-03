@@ -20,8 +20,39 @@ input[type="number"] {
 
 .plus {
     margin: 0 15px;
+    width: min-content
 }
 
 .holis.col-3 {
     padding: 0 !important;
+}
+
+span.input-group-text {
+    border: 0;
+    background-color: white;
+    padding: 5px;
+}
+
+input.form-control {
+    border: 0;
+    border-bottom: 1px gray solid;
+    border-radius: 0;
+}
+
+Button {
+    margin-top: 20px;
+}
+
+.selected {
+    background-color: #17A2B8;
+    border-block-color: #17A2B8;
+    color: white;
+}
+
+.restriccion {
+    margin: 10px 0;
+}
+
+.result {
+    display: flex;
 }
