@@ -44,3 +44,16 @@
   {/* <div>
             {'isOptimal ' + result.details.isOptimal}
           </div> */}
+
+          const solver = new SimpleSimplex({
+        objective: this.props.objective,
+        constraints: this.props.restrictionsValues,
+        optimizationType: this.props.optimizationType
+    })
+    const result = solver.solve({
+        methodName: 'simplex',
+    });
+    console.log({
+        solution: result.solution,
+        isOptimal: result.details.isOptimal,
+    });

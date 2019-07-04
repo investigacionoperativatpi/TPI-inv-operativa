@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import { setObjFunction } from '../store/actions'
+import { setObjFunction, showOrNotRestrictions } from '../store/actions'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { async } from 'q';
 
 class ObjectFunction extends Component{
   constructor() {
@@ -57,10 +58,11 @@ class ObjectFunction extends Component{
       }
     } 
     const body = {
-      objetive: JSON.parse(obj),
+      objective: JSON.parse(obj),
       optimizationType: this.state.selectMax ? 'max' : 'min'
     }
     this.props.setObjFunction(body)
+    this.props.showOrNotRestrictions()
   }
 
   render(){
@@ -109,7 +111,7 @@ class ObjectFunction extends Component{
 ObjectFunction.propTypes = {
   var: PropTypes.number.isRequired,
   restrictions: PropTypes.number.isRequired,
-  objetive: PropTypes.array.isRequired,
+  objective: PropTypes.array.isRequired,
   setObjFunction: PropTypes.func.isRequired
 }
 
@@ -117,12 +119,13 @@ const mapStateToProps = (state) => {
   return {
     var: state.var,
     restrictions: state.restrictions,
-    objetive: state.ObjFunction.objetive
+    objective: state.ObjFunction.objective
   }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  setObjFunction
+  setObjFunction,
+  showOrNotRestrictions
 }, dispatch)
 
 export default connect(

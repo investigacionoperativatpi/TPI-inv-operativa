@@ -23,7 +23,7 @@ input[type="number"] {
     width: min-content
 }
 
-.holis.col-3 {
+.holis.col-2 {
     padding: 0 !important;
 }
 
@@ -55,4 +55,8 @@ Button {
 
 .result {
     display: flex;
+}
+
+.condicion {
+    margin-right: 10px;
 }

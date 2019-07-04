@@ -3,9 +3,14 @@ const initialState = {
     restrictions: 0,
     ObjFunction:{
         show: false,
-        objetive: {},
+        objective: {},
         optimizationType: 'max'
-    }
+    },
+    restrictionsArr:{
+        show: false,
+        restrictions: []
+    },
+    result:{}
 };
 
 export default initialState 

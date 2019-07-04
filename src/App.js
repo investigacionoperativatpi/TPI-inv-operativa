@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
-//import SimpleSimplex from 'simple-simplex'
 import { connect } from 'react-redux';
 import { setVar, setRestrictions} from './store/actions';
 import VarAndObjFunction from './components/VarAndObjFunction';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ObjectFunction from './components/ObjectFunction';
-import Restrictions from './components/restrictions'
+import Restrictions from './components/restrictions';
 
 
 class App extends React.Component{
   render () {
-    const { show } = this.props
+    const { showObjFunction, showRestrictions } = this.props
     console.log(this.props)
     return (
       <div className="app">
@@ -21,9 +20,13 @@ class App extends React.Component{
           <Col md={12} lg={4}>
             <VarAndObjFunction/>
           </Col>
-          {show &&
+          {showObjFunction &&
             <Col md={12} lg={8}>
               <ObjectFunction/>
+            </Col>
+          }
+          {showRestrictions &&
+            <Col md={12} lg={12}>
               <Restrictions/>
             </Col>
           }
@@ -37,7 +40,8 @@ const mapStateToProps = (state) => {
 return {
   var: state.var,
   restrictions: state.restrictions,
-  show: state.ObjFunction.show
+  showObjFunction: state.ObjFunction.show,
+  showRestrictions: state.restrictionsArr.show
 }
 }
 

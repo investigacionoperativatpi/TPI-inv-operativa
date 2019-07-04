@@ -30,11 +30,38 @@ function reducer(state = initialState, action) {
               ...state,
               ObjFunction:{
                 ...state.ObjFunction,
-                objetive : action.obj.objetive,
+                objective : action.obj.objective,
                 optimizationType: action.obj.optimizationType 
               }
     
             };
+        case 'SET_RESTRICTIONS_VALUES':
+          console.log('paso por el reducer en el SET_RESTRICTIONS_VALUES', action)
+            return {
+              ...state,
+              restrictionsArr:{
+                ...state.restrictionsArr,
+                  restrictions: action.value,
+                  solve: true   
+              }
+            };
+        case 'SHOW_ORNOT_RESTRICTIONS':
+          console.log('paso por el reducer cosa de mostrar las restrictions')
+            return {
+              ...state,
+              restrictionsArr:{
+                ...state.restrictionsArr,
+                show: !state.restrictionsArr.show
+              }
+
+            };
+            case 'SAVE_RESULT':
+              console.log('paso por el reducer a guardar el result')
+                return {
+                  ...state,
+                  result: action.result
+    
+                };
       default:
         return state;
     }
