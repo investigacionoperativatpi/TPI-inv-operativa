@@ -10,7 +10,8 @@ const initialState = {
         show: false,
         restrictions: []
     },
-    result:{}
+    result:{},
+    showResult: false
 };
 
 export default initialState 

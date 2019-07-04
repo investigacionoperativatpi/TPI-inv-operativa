@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ObjectFunction from './components/ObjectFunction';
 import Restrictions from './components/restrictions';
+import Coeficientes from './components/coeficientes';
 
 
 class App extends React.Component{
@@ -31,6 +32,37 @@ class App extends React.Component{
             </Col>
           }
         </Row>
+        {this.props.showResult ? 
+          (
+            <div className="resultados">
+              {this.props.result.isOptimal ? 
+              (
+                <div>
+                  <h2>Se puedo llegar a un resultado optimo</h2>
+                  <p>{`El optimo es: ${this.props.result.solution.optimum}`}</p>
+                  {Object.keys(this.props.result.solution.coefficients).length > 0 ?
+                    (
+                      <div>
+                        <p>Los coeficientes son:</p>
+                        <Coeficientes coeficientes={this.props.result.solution.coefficients}/>
+                      </div>
+                    ) 
+                    :
+                    ''
+                  }
+                  {
+                    
+                  }
+                </div>
+              )
+              :
+              <p>No se puedo llegar un resultado optimo</p>
+            }
+            </div>
+          ) 
+          : 
+          ''
+        }
       </div>
     );
   }
@@ -41,7 +73,9 @@ return {
   var: state.var,
   restrictions: state.restrictions,
   showObjFunction: state.ObjFunction.show,
-  showRestrictions: state.restrictionsArr.show
+  showRestrictions: state.restrictionsArr.show,
+  showResult: state.showResult,
+  result: state.result
 }
 }
 

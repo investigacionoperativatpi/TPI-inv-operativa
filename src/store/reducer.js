@@ -59,8 +59,8 @@ function reducer(state = initialState, action) {
               console.log('paso por el reducer a guardar el result')
                 return {
                   ...state,
-                  result: action.result
-    
+                  result: action.result,
+                  showResult: true
                 };
       default:
         return state;
